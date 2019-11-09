@@ -1,6 +1,6 @@
 module Framework.Button exposing (simple)
 
-{-| This module contains a attribute to style buttons.
+{-| This module contains attributes to style buttons.
 
 ```
 Input.button (Button.simple ++ Color.primary) <|
@@ -24,7 +24,7 @@ import Framework.Color as Color
 import Html.Attributes as Attributes
 
 
-{-| a simple Button styling. Check the source-code for more information.
+{-| A simple Button styling. Check the source-code for more information.
 -}
 simple : List (Attribute msg)
 simple =

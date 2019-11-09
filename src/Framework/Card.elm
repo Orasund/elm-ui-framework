@@ -32,6 +32,9 @@ import Element.Border as Border
 import Framework.Color as Color
 
 
+{-| A basic card.
+Check the source-code for more information.
+-}
 simple : List (Attribute msg)
 simple =
     [ Border.shadow
@@ -54,16 +57,25 @@ withSize int =
     simple ++ [ Element.width (Element.minimum 240 <| Element.maximum int <| Element.fill) ]
 
 
+{-| A 240px wide card.
+Check the source-code for more information.
+-}
 small : List (Attribute msg)
 small =
     withSize 240
 
 
+{-| A 480px wide card.
+Check the source-code for more information.
+-}
 large : List (Attribute msg)
 large =
     withSize 480
 
 
+{-| A card filling all the avaiable space.
+Check the source-code for more information.
+-}
 fill : List (Attribute msg)
 fill =
     simple ++ [ Element.width Element.fill ]

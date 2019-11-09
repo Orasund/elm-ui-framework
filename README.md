@@ -5,17 +5,22 @@ Elm-ui Framework is a reinterpretation of [lucamug/style-framework](https://pack
 The basic idea is that we use [mdgriffith/elm-ui](https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/) for layouts and only add styling in form of `List (Attributes msg)` lists.
 
 ```
-Element.el Card.simple <| Element.text "Card.simple"
+Element.el Card.simple <|
+  Element.text "This is a basic card"
 ```
+
+[Here is an example of the framework in action](https://orasund.github.io/elm-ui-framework/)
 
 ## When to use this package
 
-* **As an addition to elm-ui**
+* **As an addition to elm-ui**  
     If are using Elm-ui, you can always install this package along side it.
-* **As a basic framework**
+* **As a basic framework**  
     If you are creating a small project and don't want to think about styling.
-* **As a starting point for your own theme**
+* **As a starting point for your own theme**  
     If you want to create your own theme, you can start by using this package and then slowly replaces various functions.
+
+For a more professional use, it might be that [lucamug/style-framework](https://package.elm-lang.org/packages/lucamug/style-framework/latest/) suits you better.
 
 ## Getting started
 

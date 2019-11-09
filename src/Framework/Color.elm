@@ -1,31 +1,15 @@
 module Framework.Color exposing
-    ( cyan
-    , danger
-    , dark
-    , darkGrey
-    , darkerGrey
-    , disabled
-    , green
-    , grey
-    , info
-    , light
-    , lightGrey
-    , lighterGrey
-    , primary
-    , red
-    , success
-    , turquoise
-    , warning
-    , yellow
+    ( cyan, green, lighterGrey, lightGrey, grey, darkGrey, darkerGrey, red, turquoise, yellow
+    , danger, light, dark, disabled, info, primary, success, warning
     )
 
 {-| This module contains the colors used in the framework.
 
-@ docs cyan, green, lighterGrey, lightGrey, grey, darkGrey, darkerGrey, red, turquoise, yellow
+@docs cyan, green, lighterGrey, lightGrey, grey, darkGrey, darkerGrey, red, turquoise, yellow
 
 Some colors also have a Attribute that can be used nearly everywhere.
 
-@ docs danger, light, dark, disabled, info, primary, success, warning
+@docs danger, light, dark, disabled, info, primary, success, warning
 
 -}
 

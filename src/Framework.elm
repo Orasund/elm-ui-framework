@@ -38,7 +38,7 @@ container =
     ]
 
 
-{-| A replacement of Element.layout adding both the Framework.layoutOptions and the Framework.layoutAttributes.
+{-| A replacement of `Element.layout` adding both the `Framework.layoutOptions` and the Framework.layoutAttributes.
 -}
 layout : List (Attribute msg) -> Element msg -> Html msg
 layout attributes =

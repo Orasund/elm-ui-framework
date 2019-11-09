@@ -238,27 +238,31 @@ input : Element ()
 input =
     Element.column Grid.section <|
         [ Element.el Heading.h2 <| Element.text "Input"
-        , Element.column (Card.fill ++ Grid.simple)
-            [ Input.text Input.simple
-                { onChange = always ()
-                , text = "Input.simple"
-                , placeholder = Nothing
-                , label = Input.labelLeft Input.label <| Element.text "Input.label"
-                }
-            , Input.multiline Input.simple
-                { onChange = always ()
-                , text = "Input.simple"
-                , placeholder = Nothing
-                , label = Input.labelLeft Input.label <| Element.text "Input.label"
-                , spellcheck = False
-                }
-            , Input.currentPassword Input.simple
-                { onChange = always ()
-                , text = "Input.simple"
-                , placeholder = Nothing
-                , label = Input.labelLeft Input.label <| Element.text "Input.label"
-                , show = False
-                }
+        , Element.wrappedRow (Card.fill ++ Grid.simple)
+            [ Element.column Grid.simple
+                [ Input.text Input.simple
+                    { onChange = always ()
+                    , text = "Input.simple"
+                    , placeholder = Nothing
+                    , label = Input.labelLeft Input.label <| Element.text "Input.label"
+                    }
+                , Input.multiline Input.simple
+                    { onChange = always ()
+                    , text = "Input.simple"
+                    , placeholder = Nothing
+                    , label = Input.labelLeft Input.label <| Element.text "Input.label"
+                    , spellcheck = False
+                    }
+                ]
+            , Element.column Grid.simple
+                [ Input.currentPassword Input.simple
+                    { onChange = always ()
+                    , text = "Input.simple"
+                    , placeholder = Nothing
+                    , label = Input.labelLeft Input.label <| Element.text "Input.label"
+                    , show = False
+                    }
+                ]
             ]
         , Element.text "Input attributes can be combined with other attributes."
         , Element.wrappedRow Grid.simple <|
