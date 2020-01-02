@@ -17,7 +17,6 @@ view =
 
 import Element exposing (Attribute, Element, Option)
 import Element.Background as Background
-import Element.Border as Border
 import Element.Font as Font
 import Element.Region as Region
 import Framework.Color as Color

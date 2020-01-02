@@ -1,4 +1,7 @@
-module Framework.Grid exposing (simple, spacedEvenly, section)
+module Framework.Grid exposing
+    ( simple, compact, spaceEvenly, section
+    , spacedEvenly
+    )
 
 {-| This module include the basic attributes for columns and rows and two variants.
 Any of these Attributes can be used for columns and rows.
@@ -11,13 +14,28 @@ Element.row Grid.spacedEvenly <|
     ]
 ```
 
-@docs simple, spacedEvenly, section
+@docs simple, compact, spaceEvenly, section
+
+
+## DEPRECATED
+
+@docs spacedEvenly
 
 -}
 
 import Element exposing (Attribute)
 import Element.Border as Border
 import Framework.Color as Color
+
+
+{-| the simple styling but without the spacing.
+Check the source-code for more information.
+-}
+compact : List (Attribute msg)
+compact =
+    [ Element.width Element.fill
+    , Element.alignTop
+    ]
 
 
 {-| The basic attributes for columns and rows.
@@ -31,11 +49,23 @@ simple =
     ]
 
 
-{-| The simple attibutes but with evenly spaced elements.
-Check the source-code for more information.
+{-| DEPRECATED. Use spaceEvenly instead
 -}
 spacedEvenly : List (Attribute msg)
 spacedEvenly =
+    [ Element.spaceEvenly
+    , Element.width Element.fill
+    , Element.height Element.fill
+    , Element.centerX
+    , Element.centerY
+    ]
+
+
+{-| The simple attibutes but with evenly spaced elements.
+Check the source-code for more information.
+-}
+spaceEvenly : List (Attribute msg)
+spaceEvenly =
     [ Element.spaceEvenly
     , Element.width Element.fill
     , Element.height Element.fill

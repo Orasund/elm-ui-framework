@@ -1,4 +1,4 @@
-module UiFramework.Example exposing (main)
+module Example exposing (main)
 
 import Element exposing (Element)
 import Element.Background as Background
@@ -149,8 +149,28 @@ grid =
                         , Element.el Card.simple <| Element.text "item"
                         ]
                     ]
-                , Element.column (Card.simple ++ Grid.spacedEvenly) <|
-                    [ Element.el Heading.h3 <| Element.text "Grid.spacedEvenly"
+                , Element.column (Card.simple ++ Grid.compact) <|
+                    [ Element.el Heading.h3 <| Element.text "Grid.compact"
+                    , Element.row Grid.compact <|
+                        [ Element.el Card.simple <| Element.text "item"
+                        , Element.el Card.simple <| Element.text "item"
+                        , Element.el Card.simple <| Element.text "item"
+                        ]
+                    , Element.row Grid.compact <|
+                        [ Element.el Card.simple <| Element.text "item"
+                        , Element.el Card.simple <| Element.text "item"
+                        , Element.el Card.simple <| Element.text "item"
+                        ]
+                    , Element.row Grid.compact <|
+                        [ Element.el Card.simple <| Element.text "item"
+                        , Element.el Card.simple <| Element.text "item"
+                        , Element.el Card.simple <| Element.text "item"
+                        ]
+                    ]
+                ]
+            , Element.wrappedRow Grid.simple
+                [ Element.column (Card.simple ++ Grid.spaceEvenly) <|
+                    [ Element.el Heading.h3 <| Element.text "Grid.spaceEvenly"
                     , Element.row Grid.spacedEvenly <|
                         [ Element.el Card.simple <| Element.text "item"
                         , Element.el Card.simple <| Element.text "item"
@@ -189,9 +209,9 @@ grid =
                 ]
             , Element.column Grid.simple <|
                 [ Element.text "Grid attributes can be combined with other attributes."
-                , Element.el Heading.h3 <| Element.text "Grid.spacedEvenly ++ Card.simple ++ Color.dark"
-                , Element.column (Grid.spacedEvenly ++ Card.simple ++ Color.dark) <|
-                    [ Element.row Grid.spacedEvenly <|
+                , Element.el Heading.h3 <| Element.text "Grid.spaceEvenly ++ Card.simple ++ Color.dark"
+                , Element.column (Grid.spaceEvenly ++ Card.simple ++ Color.dark) <|
+                    [ Element.row Grid.spaceEvenly <|
                         [ Element.el (Card.simple ++ Color.warning) <| Element.text ""
                         , Element.el (Card.simple ++ Color.info) <| Element.text ""
                         , Element.el (Card.simple ++ Color.success) <| Element.text ""
@@ -207,10 +227,24 @@ button =
     Element.column Grid.section <|
         [ Element.el Heading.h2 <| Element.text "Button"
         , Element.column (Card.simple ++ Grid.simple) <|
-            [ Input.button Button.simple <|
-                { onPress = Nothing
-                , label = Element.text "Button.simple"
-                }
+            [ Element.wrappedRow Grid.simple <|
+                [ Input.button Button.simple <|
+                    { onPress = Nothing
+                    , label = Element.text "Button.simple"
+                    }
+                , Input.button Button.groupLeft <|
+                    { onPress = Nothing
+                    , label = Element.text "Button.groupLeft"
+                    }
+                , Input.button Button.groupCenter <|
+                    { onPress = Nothing
+                    , label = Element.text "Button.groupCenter"
+                    }
+                , Input.button Button.groupRight <|
+                    { onPress = Nothing
+                    , label = Element.text "Button.groupRight"
+                    }
+                ]
             , Element.column Grid.section <|
                 [ Element.text "Button attributes can be combined with other attributes."
                 , Element.wrappedRow Grid.simple <|
@@ -227,6 +261,17 @@ button =
                     , Input.button (Button.simple ++ Card.large) <|
                         { onPress = Nothing
                         , label = Element.text "Button.simple ++ Card.large"
+                        }
+                    ]
+                , Element.el Heading.h3 <| Element.text "Grid.compact with Button.groupLeft/Center/Right"
+                , Element.row Grid.compact <|
+                    [ Input.button Button.groupLeft <|
+                        { onPress = Nothing
+                        , label = Element.text "Button.groupLeft"
+                        }
+                    , Input.button Button.groupRight <|
+                        { onPress = Nothing
+                        , label = Element.text "Button.groupRight"
                         }
                     ]
                 ]
