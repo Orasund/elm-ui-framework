@@ -16,11 +16,9 @@ Input.text Input.simple
 
 -}
 
-import Element exposing (Attribute, Element, Option)
+import Element exposing (Attribute)
 import Element.Background as Background
-import Element.Border as Border
 import Element.Font as Font
-import Framework.Card as Card
 import Framework.Color as Color
 
 

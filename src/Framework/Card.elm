@@ -27,7 +27,6 @@ Input.button (Button.simple ++ Card.large) <|
 -}
 
 import Element exposing (Attribute)
-import Element.Background as Background
 import Element.Border as Border
 import Framework.Color as Color
 

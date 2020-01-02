@@ -1,4 +1,4 @@
-module Framework.Button exposing (simple, groupLeft, groupCenter, groupRight)
+module Framework.Button exposing (simple, groupLeft, groupCenter, groupRight, groupTop, groupBottom)
 
 {-| This module contains attributes to style buttons.
 
@@ -11,7 +11,7 @@ Input.button (Button.simple ++ Color.primary) <|
 
 The attribute can only be used on `Input.button` but it may be with additional attibutes from this package.
 
-@docs simple, groupLeft, groupCenter, groupRight
+@docs simple, groupLeft, groupCenter, groupRight, groupTop, groupBottom
 
 -}
 
@@ -21,7 +21,6 @@ import Element.Border as Border
 import Element.Font as Font
 import Framework.Card as Card
 import Framework.Color as Color
-import Html.Attributes as Attributes
 
 
 {-| A simple Button styling. Check the source-code for more information.
@@ -61,6 +60,34 @@ groupRight =
                 { topLeft = 0
                 , topRight = 4
                 , bottomLeft = 0
+                , bottomRight = 4
+                }
+           ]
+
+
+{-| Top button of a group wrapped in `Grid.compact`
+-}
+groupTop : List (Attribute msg)
+groupTop =
+    simple
+        ++ [ Border.roundEach
+                { topLeft = 4
+                , topRight = 4
+                , bottomLeft = 0
+                , bottomRight = 0
+                }
+           ]
+
+
+{-| Bottom button of a group wrapped in `Grid.compact`
+-}
+groupBottom : List (Attribute msg)
+groupBottom =
+    simple
+        ++ [ Border.roundEach
+                { topLeft = 0
+                , topRight = 0
+                , bottomLeft = 4
                 , bottomRight = 4
                 }
            ]
