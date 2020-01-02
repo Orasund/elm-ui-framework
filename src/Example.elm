@@ -244,6 +244,14 @@ button =
                     { onPress = Nothing
                     , label = Element.text "Button.groupRight"
                     }
+                , Input.button Button.groupTop <|
+                    { onPress = Nothing
+                    , label = Element.text "Button.groupTop"
+                    }
+                , Input.button Button.groupBottom <|
+                    { onPress = Nothing
+                    , label = Element.text "Button.groupBottom"
+                    }
                 ]
             , Element.column Grid.section <|
                 [ Element.text "Button attributes can be combined with other attributes."
