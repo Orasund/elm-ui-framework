@@ -1,4 +1,4 @@
-module Framework exposing (layout, container, layoutOptions, layoutAttributes)
+module Framework exposing (responsiveLayout, layout, container, layoutOptions, layoutAttributes)
 
 {-| This module includes the basic building bocks.
 Maybe start by copying the follow code into your project:
@@ -11,7 +11,7 @@ view =
             Element.text "the first element should be a container."
 ```
 
-@docs layout, container, layoutOptions, layoutAttributes
+@docs responsiveLayout, layout, container, layoutOptions, layoutAttributes
 
 -}
 
@@ -21,6 +21,7 @@ import Element.Font as Font
 import Element.Region as Region
 import Framework.Color as Color
 import Html exposing (Html)
+import Html.Attributes as Attributes
 
 
 {-| The container should be the outer most element.
@@ -45,6 +46,30 @@ layout attributes =
         { options = layoutOptions
         }
         (layoutAttributes ++ attributes)
+
+
+{-| same as `layout`, but also includes the following meta tag:
+
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+This will ensure that phones will render the page responsively. Without this,
+a typical phone will set its internal "screen width" to 1000px and will then
+manually scale the page to fit the screen.
+
+-}
+responsiveLayout : List (Attribute msg) -> Element msg -> Html msg
+responsiveLayout attributes view =
+    Html.div []
+        [ Html.node "meta"
+            [ Attributes.attribute "name" "viewport"
+            , Attributes.attribute "content" "width=device-width, initial-scale=1.0"
+            ]
+            []
+        , layout attributes <|
+            view
+        ]
 
 
 {-| The default layoutOptions. Check the source code if you want to know more.

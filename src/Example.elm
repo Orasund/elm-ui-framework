@@ -12,6 +12,7 @@ import Framework.Grid as Grid
 import Framework.Heading as Heading
 import Framework.Input as Input
 import Html exposing (Html)
+import Html.Attributes as Attributes
 
 
 heading : Element msg
@@ -33,7 +34,9 @@ card : Element msg
 card =
     Element.column Grid.section <|
         [ Element.el Heading.h1 <| Element.text "Card"
-        , Element.text "Cards work on almost any Element. Try resizing the screen to see the differences"
+        , Element.paragraph [] <|
+            List.singleton <|
+                Element.text "Cards work on almost any Element. Try resizing the screen to see the differences"
         , Element.column (Card.fill ++ Grid.simple)
             [ Element.wrappedRow Grid.simple
                 [ Element.el Card.simple <| Element.text "Card.simple"
@@ -42,7 +45,9 @@ card =
                 , Element.el Card.fill <| Element.text "Card.fill"
                 ]
             ]
-        , Element.text "Card attributes can be combined with other attributes."
+        , Element.paragraph [] <|
+            List.singleton <|
+                Element.text "Card attributes can be combined with other attributes."
         , Element.wrappedRow Grid.simple <|
             [ Element.el (Card.simple ++ Color.primary) <|
                 Element.text "Card.simple ++ Color.primary"
@@ -208,8 +213,13 @@ grid =
                         ]
                 ]
             , Element.column Grid.simple <|
-                [ Element.text "Grid attributes can be combined with other attributes."
-                , Element.el Heading.h3 <| Element.text "Grid.spaceEvenly ++ Card.simple ++ Color.dark"
+                [ Element.paragraph [] <|
+                    List.singleton <|
+                        Element.text "Grid attributes can be combined with other attributes."
+                , Element.paragraph [] <|
+                    List.singleton <|
+                        Element.el Heading.h3 <|
+                            Element.text "Grid.spaceEvenly ++ Card.simple ++ Color.dark"
                 , Element.column (Grid.spaceEvenly ++ Card.simple ++ Color.dark) <|
                     [ Element.row Grid.spaceEvenly <|
                         [ Element.el (Card.simple ++ Color.warning) <| Element.text ""
@@ -254,7 +264,9 @@ button =
                     }
                 ]
             , Element.column Grid.section <|
-                [ Element.text "Button attributes can be combined with other attributes."
+                [ Element.paragraph [] <|
+                    List.singleton <|
+                        Element.text "Button attributes can be combined with other attributes."
                 , Element.wrappedRow Grid.simple <|
                     [ Input.button (Button.simple ++ Color.disabled) <|
                         { onPress = Nothing
@@ -271,7 +283,10 @@ button =
                         , label = Element.text "Button.simple ++ Card.large"
                         }
                     ]
-                , Element.el Heading.h3 <| Element.text "Grid.compact with Button.groupLeft/Center/Right"
+                , Element.paragraph [] <|
+                    List.singleton <|
+                        Element.el Heading.h3 <|
+                            Element.text "Grid.compact with Button.groupLeft/Center/Right"
                 , Element.row Grid.compact <|
                     [ Input.button Button.groupLeft <|
                         { onPress = Nothing
@@ -317,7 +332,9 @@ input =
                     }
                 ]
             ]
-        , Element.text "Input attributes can be combined with other attributes."
+        , Element.paragraph [] <|
+            List.singleton <|
+                Element.text "Input attributes can be combined with other attributes."
         , Element.wrappedRow Grid.simple <|
             [ Input.text (Color.danger ++ Input.simple)
                 { onChange = always ()
@@ -336,7 +353,9 @@ input =
             ]
         , Element.paragraph (Card.fill ++ Color.warning) <|
             [ Element.el [ Font.bold ] <| Element.text "Warning: "
-            , Element.text "color changing attributes need to come before the Input attribute."
+            , Element.paragraph [] <|
+                List.singleton <|
+                    Element.text "color changing attributes need to come before the Input attribute."
             ]
         ]
 
@@ -357,5 +376,5 @@ view =
 
 main : Html ()
 main =
-    Framework.layout [] <|
+    Framework.responsiveLayout [] <|
         view
