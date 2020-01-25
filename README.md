@@ -24,12 +24,12 @@ For a more professional use, it might be that [lucamug/style-framework](https://
 
 ## Getting started
 
-The most minimal code would be the following
+The most basic code would be the following
 
 ```
 view : Html msg
 view =
-    Framework.layout [] <|
+    Framework.responsiveLayout [] <|
         Element.el Framework.container <|
             Element.text "the first element should be a container."
 ```

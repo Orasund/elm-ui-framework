@@ -4455,6 +4455,15 @@ var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 			return 3;
 	}
 };
+var $elm$virtual_dom$VirtualDom$attribute = F2(
+	function (key, value) {
+		return A2(
+			_VirtualDom_attribute,
+			_VirtualDom_noOnOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
+	});
+var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
+var $elm$html$Html$div = _VirtualDom_node('div');
 var $mdgriffith$elm_ui$Internal$Model$Colored = F3(
 	function (a, b, c) {
 		return {$: 'Colored', a: a, b: b, c: c};
@@ -4776,7 +4785,6 @@ var $mdgriffith$elm_ui$Internal$Flag$alignBottom = $mdgriffith$elm_ui$Internal$F
 var $mdgriffith$elm_ui$Internal$Flag$alignRight = $mdgriffith$elm_ui$Internal$Flag$flag(40);
 var $mdgriffith$elm_ui$Internal$Flag$centerX = $mdgriffith$elm_ui$Internal$Flag$flag(42);
 var $mdgriffith$elm_ui$Internal$Flag$centerY = $mdgriffith$elm_ui$Internal$Flag$flag(43);
-var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$core$Basics$identity = function (x) {
 	return x;
 };
@@ -8957,13 +8965,6 @@ var $mdgriffith$elm_ui$Internal$Model$alignYName = function (align) {
 			return $mdgriffith$elm_ui$Internal$Style$classes.alignedVertically + (' ' + $mdgriffith$elm_ui$Internal$Style$classes.alignCenterY);
 	}
 };
-var $elm$virtual_dom$VirtualDom$attribute = F2(
-	function (key, value) {
-		return A2(
-			_VirtualDom_attribute,
-			_VirtualDom_noOnOrFormAction(key),
-			_VirtualDom_noJavaScriptOrHtmlUri(value));
-	});
 var $mdgriffith$elm_ui$Internal$Model$FullTransform = F4(
 	function (a, b, c, d) {
 		return {$: 'FullTransform', a: a, b: b, c: c, d: d};
@@ -10433,6 +10434,26 @@ var $Orasund$elm_ui_framework$Framework$layout = function (attributes) {
 		{options: $Orasund$elm_ui_framework$Framework$layoutOptions},
 		_Utils_ap($Orasund$elm_ui_framework$Framework$layoutAttributes, attributes));
 };
+var $elm$html$Html$node = $elm$virtual_dom$VirtualDom$node;
+var $Orasund$elm_ui_framework$Framework$responsiveLayout = F2(
+	function (attributes, view) {
+		return A2(
+			$elm$html$Html$div,
+			_List_Nil,
+			_List_fromArray(
+				[
+					A3(
+					$elm$html$Html$node,
+					'meta',
+					_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$attribute, 'name', 'viewport'),
+							A2($elm$html$Html$Attributes$attribute, 'content', 'width=device-width, initial-scale=1.0')
+						]),
+					_List_Nil),
+					A2($Orasund$elm_ui_framework$Framework$layout, attributes, view)
+				]));
+	});
 var $mdgriffith$elm_ui$Internal$Model$Button = {$: 'Button'};
 var $mdgriffith$elm_ui$Internal$Model$Describe = function (a) {
 	return {$: 'Describe', a: a};
@@ -10783,7 +10804,6 @@ var $mdgriffith$elm_ui$Element$focused = function (decs) {
 };
 var $Orasund$elm_ui_framework$Framework$Color$grey = A3($mdgriffith$elm_ui$Element$rgb255, 122, 122, 122);
 var $mdgriffith$elm_ui$Element$htmlAttribute = $mdgriffith$elm_ui$Internal$Model$Attr;
-var $Orasund$elm_ui_framework$Framework$Color$lightGrey = A3($mdgriffith$elm_ui$Element$rgb255, 219, 219, 219);
 var $mdgriffith$elm_ui$Internal$Model$Hover = {$: 'Hover'};
 var $mdgriffith$elm_ui$Internal$Flag$hover = $mdgriffith$elm_ui$Internal$Flag$flag(33);
 var $mdgriffith$elm_ui$Element$mouseOver = function (decs) {
@@ -10795,18 +10815,24 @@ var $mdgriffith$elm_ui$Element$mouseOver = function (decs) {
 			$mdgriffith$elm_ui$Internal$Model$Hover,
 			$mdgriffith$elm_ui$Internal$Model$unwrapDecorations(decs)));
 };
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
-var $Orasund$elm_ui_framework$Framework$Color$disabled = _List_fromArray(
+var $Orasund$elm_ui_framework$Framework$Color$lightGrey = A3($mdgriffith$elm_ui$Element$rgb255, 219, 219, 219);
+var $Orasund$elm_ui_framework$Framework$Color$simple = _List_fromArray(
 	[
 		$mdgriffith$elm_ui$Element$Background$color($Orasund$elm_ui_framework$Framework$Color$lightGrey),
-		$mdgriffith$elm_ui$Element$Border$color($Orasund$elm_ui_framework$Framework$Color$lightGrey),
-		$mdgriffith$elm_ui$Element$Font$color($Orasund$elm_ui_framework$Framework$Color$grey),
-		$mdgriffith$elm_ui$Element$mouseOver(_List_Nil),
-		$mdgriffith$elm_ui$Element$focused(_List_Nil),
-		$mdgriffith$elm_ui$Element$htmlAttribute(
-		A2($elm$html$Html$Attributes$style, 'cursor', 'not-allowed'))
+		$mdgriffith$elm_ui$Element$Border$color($Orasund$elm_ui_framework$Framework$Color$lightGrey)
 	]);
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
+var $Orasund$elm_ui_framework$Framework$Color$disabled = _Utils_ap(
+	$Orasund$elm_ui_framework$Framework$Color$simple,
+	_List_fromArray(
+		[
+			$mdgriffith$elm_ui$Element$Font$color($Orasund$elm_ui_framework$Framework$Color$grey),
+			$mdgriffith$elm_ui$Element$mouseOver(_List_Nil),
+			$mdgriffith$elm_ui$Element$focused(_List_Nil),
+			$mdgriffith$elm_ui$Element$htmlAttribute(
+			A2($elm$html$Html$Attributes$style, 'cursor', 'not-allowed'))
+		]));
 var $mdgriffith$elm_ui$Element$el = F2(
 	function (attrs, child) {
 		return A4(
@@ -10824,21 +10850,6 @@ var $mdgriffith$elm_ui$Element$el = F2(
 				_List_fromArray(
 					[child])));
 	});
-var $mdgriffith$elm_ui$Internal$Flag$borderRound = $mdgriffith$elm_ui$Internal$Flag$flag(17);
-var $mdgriffith$elm_ui$Element$Border$roundEach = function (_v0) {
-	var topLeft = _v0.topLeft;
-	var topRight = _v0.topRight;
-	var bottomLeft = _v0.bottomLeft;
-	var bottomRight = _v0.bottomRight;
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$borderRound,
-		A3(
-			$mdgriffith$elm_ui$Internal$Model$Single,
-			'br-' + ($elm$core$String$fromInt(topLeft) + ('-' + ($elm$core$String$fromInt(topRight) + ($elm$core$String$fromInt(bottomLeft) + ('-' + $elm$core$String$fromInt(bottomRight)))))),
-			'border-radius',
-			$elm$core$String$fromInt(topLeft) + ('px ' + ($elm$core$String$fromInt(topRight) + ('px ' + ($elm$core$String$fromInt(bottomRight) + ('px ' + ($elm$core$String$fromInt(bottomLeft) + 'px'))))))));
-};
 var $mdgriffith$elm_ui$Internal$Flag$fontAlignment = $mdgriffith$elm_ui$Internal$Flag$flag(12);
 var $mdgriffith$elm_ui$Element$Font$center = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontAlignment, $mdgriffith$elm_ui$Internal$Style$classes.textCenter);
 var $mdgriffith$elm_ui$Internal$Model$PaddingStyle = F5(
@@ -10881,16 +10892,6 @@ var $mdgriffith$elm_ui$Element$padding = function (x) {
 			x));
 };
 var $mdgriffith$elm_ui$Element$rgba = $mdgriffith$elm_ui$Internal$Model$Rgba;
-var $mdgriffith$elm_ui$Element$Border$rounded = function (radius) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$borderRound,
-		A3(
-			$mdgriffith$elm_ui$Internal$Model$Single,
-			'br-' + $elm$core$String$fromInt(radius),
-			'border-radius',
-			$elm$core$String$fromInt(radius) + 'px'));
-};
 var $mdgriffith$elm_ui$Internal$Model$boxShadowClass = function (shadow) {
 	return $elm$core$String$concat(
 		_List_fromArray(
@@ -10915,6 +10916,24 @@ var $mdgriffith$elm_ui$Element$Border$shadow = function (almostShade) {
 			'box-shadow',
 			$mdgriffith$elm_ui$Internal$Model$formatBoxShadow(shade)));
 };
+var $mdgriffith$elm_ui$Internal$Flag$borderRound = $mdgriffith$elm_ui$Internal$Flag$flag(17);
+var $mdgriffith$elm_ui$Element$Border$rounded = function (radius) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$borderRound,
+		A3(
+			$mdgriffith$elm_ui$Internal$Model$Single,
+			'br-' + $elm$core$String$fromInt(radius),
+			'border-radius',
+			$elm$core$String$fromInt(radius) + 'px'));
+};
+var $Orasund$elm_ui_framework$Framework$Tag$simple = _Utils_ap(
+	$Orasund$elm_ui_framework$Framework$Color$simple,
+	_List_fromArray(
+		[
+			$mdgriffith$elm_ui$Element$Border$rounded(4),
+			A2($mdgriffith$elm_ui$Element$paddingXY, 7, 4)
+		]));
 var $mdgriffith$elm_ui$Internal$Model$BorderWidth = F5(
 	function (a, b, c, d, e) {
 		return {$: 'BorderWidth', a: a, b: b, c: c, d: d, e: e};
@@ -10931,69 +10950,71 @@ var $mdgriffith$elm_ui$Element$Border$width = function (v) {
 			v,
 			v));
 };
-var $Orasund$elm_ui_framework$Framework$Card$simple = _List_fromArray(
-	[
-		$mdgriffith$elm_ui$Element$Border$shadow(
-		{
-			blur: 10,
-			color: A4($mdgriffith$elm_ui$Element$rgba, 0, 0, 0, 0.05),
-			offset: _Utils_Tuple2(0, 2),
-			size: 1
-		}),
-		$mdgriffith$elm_ui$Element$Border$width(1),
-		$mdgriffith$elm_ui$Element$Border$color($Orasund$elm_ui_framework$Framework$Color$lightGrey),
-		$mdgriffith$elm_ui$Element$Border$rounded(4),
-		$mdgriffith$elm_ui$Element$alignTop,
-		$mdgriffith$elm_ui$Element$padding(20),
-		$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$shrink)
-	]);
+var $Orasund$elm_ui_framework$Framework$Card$simple = _Utils_ap(
+	$Orasund$elm_ui_framework$Framework$Tag$simple,
+	_Utils_ap(
+		$Orasund$elm_ui_framework$Framework$Color$light,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$Border$shadow(
+				{
+					blur: 10,
+					color: A4($mdgriffith$elm_ui$Element$rgba, 0, 0, 0, 0.05),
+					offset: _Utils_Tuple2(0, 2),
+					size: 1
+				}),
+				$mdgriffith$elm_ui$Element$Border$width(1),
+				$mdgriffith$elm_ui$Element$Border$color($Orasund$elm_ui_framework$Framework$Color$lightGrey),
+				$mdgriffith$elm_ui$Element$alignTop,
+				$mdgriffith$elm_ui$Element$padding(20),
+				$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$shrink)
+			])));
 var $Orasund$elm_ui_framework$Framework$Button$simple = _Utils_ap(
 	$Orasund$elm_ui_framework$Framework$Card$simple,
-	_List_fromArray(
-		[
-			$mdgriffith$elm_ui$Element$Font$center,
-			$mdgriffith$elm_ui$Element$Background$color($Orasund$elm_ui_framework$Framework$Color$lightGrey),
-			$mdgriffith$elm_ui$Element$mouseOver(
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$Border$color($Orasund$elm_ui_framework$Framework$Color$grey)
-				])),
-			A2($mdgriffith$elm_ui$Element$paddingXY, 16, 12)
-		]));
-var $Orasund$elm_ui_framework$Framework$Button$groupBottom = _Utils_ap(
+	_Utils_ap(
+		$Orasund$elm_ui_framework$Framework$Color$simple,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$Font$center,
+				$mdgriffith$elm_ui$Element$mouseOver(
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$Border$color($Orasund$elm_ui_framework$Framework$Color$grey)
+					])),
+				A2($mdgriffith$elm_ui$Element$paddingXY, 16, 12)
+			])));
+var $Orasund$elm_ui_framework$Framework$Button$fill = _Utils_ap(
 	$Orasund$elm_ui_framework$Framework$Button$simple,
 	_List_fromArray(
 		[
-			$mdgriffith$elm_ui$Element$Border$roundEach(
-			{bottomLeft: 4, bottomRight: 4, topLeft: 0, topRight: 0})
+			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
 		]));
-var $Orasund$elm_ui_framework$Framework$Button$groupCenter = _Utils_ap(
-	$Orasund$elm_ui_framework$Framework$Button$simple,
-	_List_fromArray(
-		[
-			$mdgriffith$elm_ui$Element$Border$rounded(0)
-		]));
-var $Orasund$elm_ui_framework$Framework$Button$groupLeft = _Utils_ap(
-	$Orasund$elm_ui_framework$Framework$Button$simple,
-	_List_fromArray(
-		[
-			$mdgriffith$elm_ui$Element$Border$roundEach(
-			{bottomLeft: 4, bottomRight: 0, topLeft: 4, topRight: 0})
-		]));
-var $Orasund$elm_ui_framework$Framework$Button$groupRight = _Utils_ap(
-	$Orasund$elm_ui_framework$Framework$Button$simple,
-	_List_fromArray(
-		[
-			$mdgriffith$elm_ui$Element$Border$roundEach(
-			{bottomLeft: 0, bottomRight: 4, topLeft: 0, topRight: 4})
-		]));
-var $Orasund$elm_ui_framework$Framework$Button$groupTop = _Utils_ap(
-	$Orasund$elm_ui_framework$Framework$Button$simple,
-	_List_fromArray(
-		[
-			$mdgriffith$elm_ui$Element$Border$roundEach(
-			{bottomLeft: 0, bottomRight: 0, topLeft: 4, topRight: 4})
-		]));
+var $mdgriffith$elm_ui$Element$Border$roundEach = function (_v0) {
+	var topLeft = _v0.topLeft;
+	var topRight = _v0.topRight;
+	var bottomLeft = _v0.bottomLeft;
+	var bottomRight = _v0.bottomRight;
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$borderRound,
+		A3(
+			$mdgriffith$elm_ui$Internal$Model$Single,
+			'br-' + ($elm$core$String$fromInt(topLeft) + ('-' + ($elm$core$String$fromInt(topRight) + ($elm$core$String$fromInt(bottomLeft) + ('-' + $elm$core$String$fromInt(bottomRight)))))),
+			'border-radius',
+			$elm$core$String$fromInt(topLeft) + ('px ' + ($elm$core$String$fromInt(topRight) + ('px ' + ($elm$core$String$fromInt(bottomRight) + ('px ' + ($elm$core$String$fromInt(bottomLeft) + 'px'))))))));
+};
+var $Orasund$elm_ui_framework$Framework$Group$left = _List_fromArray(
+	[
+		$mdgriffith$elm_ui$Element$Border$roundEach(
+		{bottomLeft: 4, bottomRight: 0, topLeft: 4, topRight: 0})
+	]);
+var $Orasund$elm_ui_framework$Framework$Button$groupLeft = _Utils_ap($Orasund$elm_ui_framework$Framework$Button$simple, $Orasund$elm_ui_framework$Framework$Group$left);
+var $Orasund$elm_ui_framework$Framework$Group$right = _List_fromArray(
+	[
+		$mdgriffith$elm_ui$Element$Border$roundEach(
+		{bottomLeft: 0, bottomRight: 4, topLeft: 0, topRight: 4})
+	]);
+var $Orasund$elm_ui_framework$Framework$Button$groupRight = _Utils_ap($Orasund$elm_ui_framework$Framework$Button$simple, $Orasund$elm_ui_framework$Framework$Group$right);
 var $mdgriffith$elm_ui$Internal$Model$Left = {$: 'Left'};
 var $mdgriffith$elm_ui$Element$alignLeft = $mdgriffith$elm_ui$Internal$Model$AlignX($mdgriffith$elm_ui$Internal$Model$Left);
 var $mdgriffith$elm_ui$Internal$Flag$fontWeight = $mdgriffith$elm_ui$Internal$Flag$flag(13);
@@ -11079,6 +11100,44 @@ var $Orasund$elm_ui_framework$Framework$Card$withSize = function (_int) {
 			]));
 };
 var $Orasund$elm_ui_framework$Framework$Card$large = $Orasund$elm_ui_framework$Framework$Card$withSize(480);
+var $mdgriffith$elm_ui$Internal$Model$Paragraph = {$: 'Paragraph'};
+var $mdgriffith$elm_ui$Internal$Model$SpacingStyle = F3(
+	function (a, b, c) {
+		return {$: 'SpacingStyle', a: a, b: b, c: c};
+	});
+var $mdgriffith$elm_ui$Internal$Flag$spacing = $mdgriffith$elm_ui$Internal$Flag$flag(3);
+var $mdgriffith$elm_ui$Internal$Model$spacingName = F2(
+	function (x, y) {
+		return 'spacing-' + ($elm$core$String$fromInt(x) + ('-' + $elm$core$String$fromInt(y)));
+	});
+var $mdgriffith$elm_ui$Element$spacing = function (x) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$spacing,
+		A3(
+			$mdgriffith$elm_ui$Internal$Model$SpacingStyle,
+			A2($mdgriffith$elm_ui$Internal$Model$spacingName, x, x),
+			x,
+			x));
+};
+var $mdgriffith$elm_ui$Element$paragraph = F2(
+	function (attrs, children) {
+		return A4(
+			$mdgriffith$elm_ui$Internal$Model$element,
+			$mdgriffith$elm_ui$Internal$Model$asParagraph,
+			$mdgriffith$elm_ui$Internal$Model$div,
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Internal$Model$Describe($mdgriffith$elm_ui$Internal$Model$Paragraph),
+				A2(
+					$elm$core$List$cons,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+					A2(
+						$elm$core$List$cons,
+						$mdgriffith$elm_ui$Element$spacing(5),
+						attrs))),
+			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
+	});
 var $Orasund$elm_ui_framework$Framework$Color$primary = _List_fromArray(
 	[
 		$mdgriffith$elm_ui$Element$Background$color($Orasund$elm_ui_framework$Framework$Color$turquoise),
@@ -11104,25 +11163,6 @@ var $mdgriffith$elm_ui$Element$row = F2(
 						attrs))),
 			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
 	});
-var $mdgriffith$elm_ui$Internal$Model$SpacingStyle = F3(
-	function (a, b, c) {
-		return {$: 'SpacingStyle', a: a, b: b, c: c};
-	});
-var $mdgriffith$elm_ui$Internal$Flag$spacing = $mdgriffith$elm_ui$Internal$Flag$flag(3);
-var $mdgriffith$elm_ui$Internal$Model$spacingName = F2(
-	function (x, y) {
-		return 'spacing-' + ($elm$core$String$fromInt(x) + ('-' + $elm$core$String$fromInt(y)));
-	});
-var $mdgriffith$elm_ui$Element$spacing = function (x) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$spacing,
-		A3(
-			$mdgriffith$elm_ui$Internal$Model$SpacingStyle,
-			A2($mdgriffith$elm_ui$Internal$Model$spacingName, x, x),
-			x,
-			x));
-};
 var $Orasund$elm_ui_framework$Framework$Grid$simple = _List_fromArray(
 	[
 		$mdgriffith$elm_ui$Element$spacing(10),
@@ -11367,97 +11407,84 @@ var $Orasund$elm_ui_framework$Example$button = A2(
 							}),
 							A2(
 							$mdgriffith$elm_ui$Element$Input$button,
-							$Orasund$elm_ui_framework$Framework$Button$groupLeft,
+							$Orasund$elm_ui_framework$Framework$Button$fill,
 							{
-								label: $mdgriffith$elm_ui$Element$text('Button.groupLeft'),
+								label: $mdgriffith$elm_ui$Element$text('Button.fill'),
+								onPress: $elm$core$Maybe$Nothing
+							})
+						]))
+				])),
+			A2(
+			$mdgriffith$elm_ui$Element$column,
+			$Orasund$elm_ui_framework$Framework$Grid$simple,
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$paragraph,
+					_List_Nil,
+					$elm$core$List$singleton(
+						$mdgriffith$elm_ui$Element$text('Button attributes can be combined with other attributes.'))),
+					A2(
+					$mdgriffith$elm_ui$Element$wrappedRow,
+					$Orasund$elm_ui_framework$Framework$Grid$simple,
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$Input$button,
+							_Utils_ap($Orasund$elm_ui_framework$Framework$Button$simple, $Orasund$elm_ui_framework$Framework$Tag$simple),
+							{
+								label: $mdgriffith$elm_ui$Element$text('Button.simple ++ Tag.simple'),
 								onPress: $elm$core$Maybe$Nothing
 							}),
 							A2(
 							$mdgriffith$elm_ui$Element$Input$button,
-							$Orasund$elm_ui_framework$Framework$Button$groupCenter,
+							_Utils_ap($Orasund$elm_ui_framework$Framework$Button$simple, $Orasund$elm_ui_framework$Framework$Color$disabled),
 							{
-								label: $mdgriffith$elm_ui$Element$text('Button.groupCenter'),
+								label: $mdgriffith$elm_ui$Element$text('Button.simple ++ Color.disabled'),
+								onPress: $elm$core$Maybe$Nothing
+							}),
+							A2(
+							$mdgriffith$elm_ui$Element$Input$button,
+							_Utils_ap($Orasund$elm_ui_framework$Framework$Button$simple, $Orasund$elm_ui_framework$Framework$Color$primary),
+							{
+								label: $mdgriffith$elm_ui$Element$text('Button.simple ++ Color.primary'),
+								onPress: $elm$core$Maybe$Nothing
+							}),
+							A2(
+							$mdgriffith$elm_ui$Element$Input$button,
+							_Utils_ap($Orasund$elm_ui_framework$Framework$Button$simple, $Orasund$elm_ui_framework$Framework$Card$large),
+							{
+								label: $mdgriffith$elm_ui$Element$text('Button.simple ++ Card.large'),
+								onPress: $elm$core$Maybe$Nothing
+							})
+						])),
+					A2(
+					$mdgriffith$elm_ui$Element$paragraph,
+					_List_Nil,
+					$elm$core$List$singleton(
+						A2(
+							$mdgriffith$elm_ui$Element$el,
+							$Orasund$elm_ui_framework$Framework$Heading$h3,
+							$mdgriffith$elm_ui$Element$text('Grid.compact with Group.left/right')))),
+					A2(
+					$mdgriffith$elm_ui$Element$row,
+					$Orasund$elm_ui_framework$Framework$Grid$compact,
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$Input$button,
+							$Orasund$elm_ui_framework$Framework$Button$groupLeft,
+							{
+								label: $mdgriffith$elm_ui$Element$text('Group.left'),
 								onPress: $elm$core$Maybe$Nothing
 							}),
 							A2(
 							$mdgriffith$elm_ui$Element$Input$button,
 							$Orasund$elm_ui_framework$Framework$Button$groupRight,
 							{
-								label: $mdgriffith$elm_ui$Element$text('Button.groupRight'),
-								onPress: $elm$core$Maybe$Nothing
-							}),
-							A2(
-							$mdgriffith$elm_ui$Element$Input$button,
-							$Orasund$elm_ui_framework$Framework$Button$groupTop,
-							{
-								label: $mdgriffith$elm_ui$Element$text('Button.groupTop'),
-								onPress: $elm$core$Maybe$Nothing
-							}),
-							A2(
-							$mdgriffith$elm_ui$Element$Input$button,
-							$Orasund$elm_ui_framework$Framework$Button$groupBottom,
-							{
-								label: $mdgriffith$elm_ui$Element$text('Button.groupBottom'),
+								label: $mdgriffith$elm_ui$Element$text('Group.right'),
 								onPress: $elm$core$Maybe$Nothing
 							})
-						])),
-					A2(
-					$mdgriffith$elm_ui$Element$column,
-					$Orasund$elm_ui_framework$Framework$Grid$section,
-					_List_fromArray(
-						[
-							$mdgriffith$elm_ui$Element$text('Button attributes can be combined with other attributes.'),
-							A2(
-							$mdgriffith$elm_ui$Element$wrappedRow,
-							$Orasund$elm_ui_framework$Framework$Grid$simple,
-							_List_fromArray(
-								[
-									A2(
-									$mdgriffith$elm_ui$Element$Input$button,
-									_Utils_ap($Orasund$elm_ui_framework$Framework$Button$simple, $Orasund$elm_ui_framework$Framework$Color$disabled),
-									{
-										label: $mdgriffith$elm_ui$Element$text('Button.simple ++ Color.disabled'),
-										onPress: $elm$core$Maybe$Nothing
-									}),
-									A2(
-									$mdgriffith$elm_ui$Element$Input$button,
-									_Utils_ap($Orasund$elm_ui_framework$Framework$Button$simple, $Orasund$elm_ui_framework$Framework$Color$primary),
-									{
-										label: $mdgriffith$elm_ui$Element$text('Button.simple ++ Color.primary'),
-										onPress: $elm$core$Maybe$Nothing
-									}),
-									A2(
-									$mdgriffith$elm_ui$Element$Input$button,
-									_Utils_ap($Orasund$elm_ui_framework$Framework$Button$simple, $Orasund$elm_ui_framework$Framework$Card$large),
-									{
-										label: $mdgriffith$elm_ui$Element$text('Button.simple ++ Card.large'),
-										onPress: $elm$core$Maybe$Nothing
-									})
-								])),
-							A2(
-							$mdgriffith$elm_ui$Element$el,
-							$Orasund$elm_ui_framework$Framework$Heading$h3,
-							$mdgriffith$elm_ui$Element$text('Grid.compact with Button.groupLeft/Center/Right')),
-							A2(
-							$mdgriffith$elm_ui$Element$row,
-							$Orasund$elm_ui_framework$Framework$Grid$compact,
-							_List_fromArray(
-								[
-									A2(
-									$mdgriffith$elm_ui$Element$Input$button,
-									$Orasund$elm_ui_framework$Framework$Button$groupLeft,
-									{
-										label: $mdgriffith$elm_ui$Element$text('Button.groupLeft'),
-										onPress: $elm$core$Maybe$Nothing
-									}),
-									A2(
-									$mdgriffith$elm_ui$Element$Input$button,
-									$Orasund$elm_ui_framework$Framework$Button$groupRight,
-									{
-										label: $mdgriffith$elm_ui$Element$text('Button.groupRight'),
-										onPress: $elm$core$Maybe$Nothing
-									})
-								]))
 						]))
 				]))
 		]));
@@ -11478,7 +11505,11 @@ var $Orasund$elm_ui_framework$Example$card = A2(
 			$mdgriffith$elm_ui$Element$el,
 			$Orasund$elm_ui_framework$Framework$Heading$h1,
 			$mdgriffith$elm_ui$Element$text('Card')),
-			$mdgriffith$elm_ui$Element$text('Cards work on almost any Element. Try resizing the screen to see the differences'),
+			A2(
+			$mdgriffith$elm_ui$Element$paragraph,
+			_List_Nil,
+			$elm$core$List$singleton(
+				$mdgriffith$elm_ui$Element$text('Cards work on almost any Element. Try resizing the screen to see the differences'))),
 			A2(
 			$mdgriffith$elm_ui$Element$column,
 			_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Grid$simple),
@@ -11507,7 +11538,11 @@ var $Orasund$elm_ui_framework$Example$card = A2(
 							$mdgriffith$elm_ui$Element$text('Card.fill'))
 						]))
 				])),
-			$mdgriffith$elm_ui$Element$text('Card attributes can be combined with other attributes.'),
+			A2(
+			$mdgriffith$elm_ui$Element$paragraph,
+			_List_Nil,
+			$elm$core$List$singleton(
+				$mdgriffith$elm_ui$Element$text('Card attributes can be combined with other attributes.'))),
 			A2(
 			$mdgriffith$elm_ui$Element$wrappedRow,
 			$Orasund$elm_ui_framework$Framework$Grid$simple,
@@ -11568,6 +11603,7 @@ var $Orasund$elm_ui_framework$Framework$Color$warning = _List_fromArray(
 		$mdgriffith$elm_ui$Element$Background$color($Orasund$elm_ui_framework$Framework$Color$yellow),
 		$mdgriffith$elm_ui$Element$Border$color($Orasund$elm_ui_framework$Framework$Color$yellow)
 	]);
+var $Orasund$elm_ui_framework$Framework$Color$white = A3($mdgriffith$elm_ui$Element$rgb255, 255, 255, 255);
 var $Orasund$elm_ui_framework$Example$color = A2(
 	$mdgriffith$elm_ui$Element$column,
 	$Orasund$elm_ui_framework$Framework$Grid$section,
@@ -11617,12 +11653,16 @@ var $Orasund$elm_ui_framework$Example$color = A2(
 							$mdgriffith$elm_ui$Element$text('Color.light')),
 							A2(
 							$mdgriffith$elm_ui$Element$el,
-							_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Color$disabled),
-							$mdgriffith$elm_ui$Element$text('Color.disabled')),
+							_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Color$simple),
+							$mdgriffith$elm_ui$Element$text('Color.simple')),
 							A2(
 							$mdgriffith$elm_ui$Element$el,
 							_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Color$dark),
-							$mdgriffith$elm_ui$Element$text('Color.dark'))
+							$mdgriffith$elm_ui$Element$text('Color.dark')),
+							A2(
+							$mdgriffith$elm_ui$Element$el,
+							_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Color$disabled),
+							$mdgriffith$elm_ui$Element$text('Color.disabled'))
 						])),
 					A2(
 					$mdgriffith$elm_ui$Element$column,
@@ -11712,6 +11752,22 @@ var $Orasund$elm_ui_framework$Example$color = A2(
 									[
 										$mdgriffith$elm_ui$Element$text('Color.red'),
 										$mdgriffith$elm_ui$Element$text('#ff3860')
+									]))),
+							A2(
+							$mdgriffith$elm_ui$Element$el,
+							_Utils_ap(
+								$Orasund$elm_ui_framework$Framework$Card$fill,
+								_List_fromArray(
+									[
+										$mdgriffith$elm_ui$Element$Background$color($Orasund$elm_ui_framework$Framework$Color$white)
+									])),
+							A2(
+								$mdgriffith$elm_ui$Element$row,
+								$Orasund$elm_ui_framework$Framework$Grid$spacedEvenly,
+								_List_fromArray(
+									[
+										$mdgriffith$elm_ui$Element$text('Color.white'),
+										$mdgriffith$elm_ui$Element$text('#ffffff')
 									]))),
 							A2(
 							$mdgriffith$elm_ui$Element$el,
@@ -12109,11 +12165,19 @@ var $Orasund$elm_ui_framework$Example$grid = A2(
 					$Orasund$elm_ui_framework$Framework$Grid$simple,
 					_List_fromArray(
 						[
-							$mdgriffith$elm_ui$Element$text('Grid attributes can be combined with other attributes.'),
 							A2(
-							$mdgriffith$elm_ui$Element$el,
-							$Orasund$elm_ui_framework$Framework$Heading$h3,
-							$mdgriffith$elm_ui$Element$text('Grid.spaceEvenly ++ Card.simple ++ Color.dark')),
+							$mdgriffith$elm_ui$Element$paragraph,
+							_List_Nil,
+							$elm$core$List$singleton(
+								$mdgriffith$elm_ui$Element$text('Grid attributes can be combined with other attributes.'))),
+							A2(
+							$mdgriffith$elm_ui$Element$paragraph,
+							_List_Nil,
+							$elm$core$List$singleton(
+								A2(
+									$mdgriffith$elm_ui$Element$el,
+									$Orasund$elm_ui_framework$Framework$Heading$h3,
+									$mdgriffith$elm_ui$Element$text('Grid.spaceEvenly ++ Card.simple ++ Color.dark')))),
 							A2(
 							$mdgriffith$elm_ui$Element$column,
 							_Utils_ap(
@@ -12140,6 +12204,62 @@ var $Orasund$elm_ui_framework$Example$grid = A2(
 											$mdgriffith$elm_ui$Element$text(''))
 										]))
 								]))
+						]))
+				]))
+		]));
+var $Orasund$elm_ui_framework$Framework$Group$bottom = _List_fromArray(
+	[
+		$mdgriffith$elm_ui$Element$Border$roundEach(
+		{bottomLeft: 4, bottomRight: 4, topLeft: 0, topRight: 0})
+	]);
+var $Orasund$elm_ui_framework$Framework$Group$center = _List_fromArray(
+	[
+		$mdgriffith$elm_ui$Element$Border$rounded(0)
+	]);
+var $Orasund$elm_ui_framework$Framework$Group$top = _List_fromArray(
+	[
+		$mdgriffith$elm_ui$Element$Border$roundEach(
+		{bottomLeft: 0, bottomRight: 0, topLeft: 4, topRight: 4})
+	]);
+var $Orasund$elm_ui_framework$Example$group = A2(
+	$mdgriffith$elm_ui$Element$column,
+	$Orasund$elm_ui_framework$Framework$Grid$section,
+	_List_fromArray(
+		[
+			A2(
+			$mdgriffith$elm_ui$Element$el,
+			$Orasund$elm_ui_framework$Framework$Heading$h2,
+			$mdgriffith$elm_ui$Element$text('Group')),
+			A2(
+			$mdgriffith$elm_ui$Element$column,
+			_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Grid$simple),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$wrappedRow,
+					$Orasund$elm_ui_framework$Framework$Grid$simple,
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$el,
+							_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Group$left),
+							$mdgriffith$elm_ui$Element$text('Group.left')),
+							A2(
+							$mdgriffith$elm_ui$Element$el,
+							_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Group$center),
+							$mdgriffith$elm_ui$Element$text('Group.center')),
+							A2(
+							$mdgriffith$elm_ui$Element$el,
+							_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Group$right),
+							$mdgriffith$elm_ui$Element$text('Group.right')),
+							A2(
+							$mdgriffith$elm_ui$Element$el,
+							_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Group$top),
+							$mdgriffith$elm_ui$Element$text('Group.top')),
+							A2(
+							$mdgriffith$elm_ui$Element$el,
+							_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Group$bottom),
+							$mdgriffith$elm_ui$Element$text('Group.bottom'))
 						]))
 				]))
 		]));
@@ -12257,7 +12377,6 @@ var $mdgriffith$elm_ui$Element$Input$applyLabel = F3(
 			}
 		}
 	});
-var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
 var $mdgriffith$elm_ui$Element$Input$autofill = A2(
 	$elm$core$Basics$composeL,
 	$mdgriffith$elm_ui$Internal$Model$Attr,
@@ -13029,25 +13148,6 @@ var $mdgriffith$elm_ui$Element$Input$multiline = F2(
 			attrs,
 			{label: multi.label, onChange: multi.onChange, placeholder: multi.placeholder, text: multi.text});
 	});
-var $mdgriffith$elm_ui$Internal$Model$Paragraph = {$: 'Paragraph'};
-var $mdgriffith$elm_ui$Element$paragraph = F2(
-	function (attrs, children) {
-		return A4(
-			$mdgriffith$elm_ui$Internal$Model$element,
-			$mdgriffith$elm_ui$Internal$Model$asParagraph,
-			$mdgriffith$elm_ui$Internal$Model$div,
-			A2(
-				$elm$core$List$cons,
-				$mdgriffith$elm_ui$Internal$Model$Describe($mdgriffith$elm_ui$Internal$Model$Paragraph),
-				A2(
-					$elm$core$List$cons,
-					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-					A2(
-						$elm$core$List$cons,
-						$mdgriffith$elm_ui$Element$spacing(5),
-						attrs))),
-			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
-	});
 var $Orasund$elm_ui_framework$Framework$Input$simple = _List_fromArray(
 	[
 		$mdgriffith$elm_ui$Element$Background$color($Orasund$elm_ui_framework$Framework$Color$lighterGrey),
@@ -13124,7 +13224,11 @@ var $Orasund$elm_ui_framework$Example$input = A2(
 							})
 						]))
 				])),
-			$mdgriffith$elm_ui$Element$text('Input attributes can be combined with other attributes.'),
+			A2(
+			$mdgriffith$elm_ui$Element$paragraph,
+			_List_Nil,
+			$elm$core$List$singleton(
+				$mdgriffith$elm_ui$Element$text('Input attributes can be combined with other attributes.'))),
 			A2(
 			$mdgriffith$elm_ui$Element$wrappedRow,
 			$Orasund$elm_ui_framework$Framework$Grid$simple,
@@ -13171,7 +13275,47 @@ var $Orasund$elm_ui_framework$Example$input = A2(
 					_List_fromArray(
 						[$mdgriffith$elm_ui$Element$Font$bold]),
 					$mdgriffith$elm_ui$Element$text('Warning: ')),
-					$mdgriffith$elm_ui$Element$text('color changing attributes need to come before the Input attribute.')
+					A2(
+					$mdgriffith$elm_ui$Element$paragraph,
+					_List_Nil,
+					$elm$core$List$singleton(
+						$mdgriffith$elm_ui$Element$text('color changing attributes need to come before the Input attribute.')))
+				]))
+		]));
+var $Orasund$elm_ui_framework$Framework$Tag$slim = _Utils_ap(
+	$Orasund$elm_ui_framework$Framework$Tag$simple,
+	_List_fromArray(
+		[
+			A2($mdgriffith$elm_ui$Element$paddingXY, 7, 1)
+		]));
+var $Orasund$elm_ui_framework$Example$tag = A2(
+	$mdgriffith$elm_ui$Element$column,
+	$Orasund$elm_ui_framework$Framework$Grid$section,
+	_List_fromArray(
+		[
+			A2(
+			$mdgriffith$elm_ui$Element$el,
+			$Orasund$elm_ui_framework$Framework$Heading$h2,
+			$mdgriffith$elm_ui$Element$text('Tag')),
+			A2(
+			$mdgriffith$elm_ui$Element$column,
+			_Utils_ap($Orasund$elm_ui_framework$Framework$Card$fill, $Orasund$elm_ui_framework$Framework$Grid$simple),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$wrappedRow,
+					$Orasund$elm_ui_framework$Framework$Grid$simple,
+					_List_fromArray(
+						[
+							A2(
+							$mdgriffith$elm_ui$Element$el,
+							$Orasund$elm_ui_framework$Framework$Tag$simple,
+							$mdgriffith$elm_ui$Element$text('Tag.simple')),
+							A2(
+							$mdgriffith$elm_ui$Element$el,
+							$Orasund$elm_ui_framework$Framework$Tag$slim,
+							$mdgriffith$elm_ui$Element$text('Tag.slim'))
+						]))
 				]))
 		]));
 var $Orasund$elm_ui_framework$Example$view = A2(
@@ -13184,13 +13328,15 @@ var $Orasund$elm_ui_framework$Example$view = A2(
 			$Orasund$elm_ui_framework$Framework$Heading$h1,
 			$mdgriffith$elm_ui$Element$text('Elm-Ui Framework')),
 			$Orasund$elm_ui_framework$Example$heading,
+			$Orasund$elm_ui_framework$Example$tag,
+			$Orasund$elm_ui_framework$Example$group,
 			$Orasund$elm_ui_framework$Example$color,
 			$Orasund$elm_ui_framework$Example$card,
 			$Orasund$elm_ui_framework$Example$grid,
 			$Orasund$elm_ui_framework$Example$button,
 			$Orasund$elm_ui_framework$Example$input
 		]));
-var $Orasund$elm_ui_framework$Example$main = A2($Orasund$elm_ui_framework$Framework$layout, _List_Nil, $Orasund$elm_ui_framework$Example$view);
+var $Orasund$elm_ui_framework$Example$main = A2($Orasund$elm_ui_framework$Framework$responsiveLayout, _List_Nil, $Orasund$elm_ui_framework$Example$view);
 _Platform_export({'Example':{'init':_VirtualDom_init($Orasund$elm_ui_framework$Example$main)(0)(0)}});}(this));
 
   var app = Elm.Example.init({ node: document.getElementById("elm") });

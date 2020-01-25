@@ -1,4 +1,7 @@
-module Framework.Button exposing (simple, groupLeft, groupCenter, groupRight, groupTop, groupBottom)
+module Framework.Button exposing
+    ( simple, fill
+    , groupLeft, groupCenter, groupRight, groupTop, groupBottom
+    )
 
 {-| This module contains attributes to style buttons.
 
@@ -11,16 +14,21 @@ Input.button (Button.simple ++ Color.primary) <|
 
 The attribute can only be used on `Input.button` but it may be with additional attibutes from this package.
 
-@docs simple, groupLeft, groupCenter, groupRight, groupTop, groupBottom
+@docs simple, fill
+
+
+## DEPRECATED
+
+@docs groupLeft, groupCenter, groupRight, groupTop, groupBottom
 
 -}
 
 import Element exposing (Attribute)
-import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
 import Framework.Card as Card
 import Framework.Color as Color
+import Framework.Group as Group
 
 
 {-| A simple Button styling. Check the source-code for more information.
@@ -28,8 +36,8 @@ import Framework.Color as Color
 simple : List (Attribute msg)
 simple =
     Card.simple
+        ++ Color.simple
         ++ [ Font.center
-           , Background.color <| Color.lightGrey
            , Element.mouseOver
                 [ Border.color <| Color.grey
                 ]
@@ -37,66 +45,44 @@ simple =
            ]
 
 
-{-| Left button of a group wrapped in `Grid.compact`
+{-| A Button that fills the avaliable area. Check the source code for more information.
+-}
+fill : List (Attribute msg)
+fill =
+    simple
+        ++ [ Element.width <| Element.fill ]
+
+
+{-| DEPRECATED. Use (Button.simple ++ Group.left) instead
 -}
 groupLeft : List (Attribute msg)
 groupLeft =
-    simple
-        ++ [ Border.roundEach
-                { topLeft = 4
-                , topRight = 0
-                , bottomLeft = 4
-                , bottomRight = 0
-                }
-           ]
+    simple ++ Group.left
 
 
-{-| Right button of a group wrapped in `Grid.compact`
+{-| DEPRECATED. Use (Button.simple ++ Group.right) instead
 -}
 groupRight : List (Attribute msg)
 groupRight =
-    simple
-        ++ [ Border.roundEach
-                { topLeft = 0
-                , topRight = 4
-                , bottomLeft = 0
-                , bottomRight = 4
-                }
-           ]
+    simple ++ Group.right
 
 
-{-| Top button of a group wrapped in `Grid.compact`
+{-| DEPRECATED. Use (Button.simple ++ Group.top) instead
 -}
 groupTop : List (Attribute msg)
 groupTop =
-    simple
-        ++ [ Border.roundEach
-                { topLeft = 4
-                , topRight = 4
-                , bottomLeft = 0
-                , bottomRight = 0
-                }
-           ]
+    simple ++ Group.top
 
 
-{-| Bottom button of a group wrapped in `Grid.compact`
+{-| DEPRECATED. Use (Button.simple ++ Group.top) instead
 -}
 groupBottom : List (Attribute msg)
 groupBottom =
-    simple
-        ++ [ Border.roundEach
-                { topLeft = 0
-                , topRight = 0
-                , bottomLeft = 4
-                , bottomRight = 4
-                }
-           ]
+    simple ++ Group.bottom
 
 
-{-| Center button of a group wrapped in `Grid.compact`
+{-| DEPRECATED. Use (Button.simple ++ Group.top) instead
 -}
 groupCenter : List (Attribute msg)
 groupCenter =
-    simple
-        ++ [ Border.rounded 0
-           ]
+    simple ++ Group.center

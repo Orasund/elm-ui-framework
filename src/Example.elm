@@ -9,8 +9,10 @@ import Framework.Button as Button
 import Framework.Card as Card
 import Framework.Color as Color
 import Framework.Grid as Grid
+import Framework.Group as Group
 import Framework.Heading as Heading
 import Framework.Input as Input
+import Framework.Tag as Tag
 import Html exposing (Html)
 import Html.Attributes as Attributes
 
@@ -26,6 +28,35 @@ heading =
             , Element.el Heading.h3 <| Element.text "Heading.h4"
             , Element.el Heading.h3 <| Element.text "Heading.h5"
             , Element.el Heading.h3 <| Element.text "Heading.h6"
+            ]
+        ]
+
+
+tag : Element msg
+tag =
+    Element.column Grid.section <|
+        [ Element.el Heading.h2 <| Element.text "Tag"
+        , Element.column (Card.fill ++ Grid.simple)
+            [ Element.wrappedRow Grid.simple
+                [ Element.el Tag.simple <| Element.text "Tag.simple"
+                , Element.el Tag.slim <| Element.text "Tag.slim"
+                ]
+            ]
+        ]
+
+
+group : Element msg
+group =
+    Element.column Grid.section <|
+        [ Element.el Heading.h2 <| Element.text "Group"
+        , Element.column (Card.fill ++ Grid.simple)
+            [ Element.wrappedRow Grid.simple
+                [ Element.el (Card.fill ++ Group.left) <| Element.text "Group.left"
+                , Element.el (Card.fill ++ Group.center) <| Element.text "Group.center"
+                , Element.el (Card.fill ++ Group.right) <| Element.text "Group.right"
+                , Element.el (Card.fill ++ Group.top) <| Element.text "Group.top"
+                , Element.el (Card.fill ++ Group.bottom) <| Element.text "Group.bottom"
+                ]
             ]
         ]
 
@@ -70,8 +101,9 @@ color =
                 , Element.el (Card.fill ++ Color.warning) <| Element.text "Color.warning"
                 , Element.el (Card.fill ++ Color.danger) <| Element.text "Color.danger"
                 , Element.el (Card.fill ++ Color.light) <| Element.text "Color.light"
-                , Element.el (Card.fill ++ Color.disabled) <| Element.text "Color.disabled"
+                , Element.el (Card.fill ++ Color.simple) <| Element.text "Color.simple"
                 , Element.el (Card.fill ++ Color.dark) <| Element.text "Color.dark"
+                , Element.el (Card.fill ++ Color.disabled) <| Element.text "Color.disabled"
                 ]
             , Element.column Grid.simple
                 [ Element.el Heading.h3 <| Element.text "Elm-Ui Colors"
@@ -99,6 +131,11 @@ color =
                     Element.row Grid.spacedEvenly <|
                         [ Element.text "Color.red"
                         , Element.text "#ff3860"
+                        ]
+                , Element.el (Card.fill ++ [ Background.color Color.white ]) <|
+                    Element.row Grid.spacedEvenly <|
+                        [ Element.text "Color.white"
+                        , Element.text "#ffffff"
                         ]
                 , Element.el (Card.fill ++ [ Background.color Color.lighterGrey ]) <|
                     Element.row Grid.spacedEvenly <|
@@ -242,61 +279,49 @@ button =
                     { onPress = Nothing
                     , label = Element.text "Button.simple"
                     }
-                , Input.button Button.groupLeft <|
+                , Input.button Button.fill <|
                     { onPress = Nothing
-                    , label = Element.text "Button.groupLeft"
+                    , label = Element.text "Button.fill"
                     }
-                , Input.button Button.groupCenter <|
+                ]
+            ]
+        , Element.column Grid.simple <|
+            [ Element.paragraph [] <|
+                List.singleton <|
+                    Element.text "Button attributes can be combined with other attributes."
+            , Element.wrappedRow Grid.simple <|
+                [ Input.button (Button.simple ++ Tag.simple) <|
                     { onPress = Nothing
-                    , label = Element.text "Button.groupCenter"
+                    , label = Element.text "Button.simple ++ Tag.simple"
+                    }
+                , Input.button (Button.simple ++ Color.disabled) <|
+                    { onPress = Nothing
+                    , label = Element.text "Button.simple ++ Color.disabled"
+                    }
+                , Input.button
+                    (Button.simple ++ Color.primary)
+                  <|
+                    { onPress = Nothing
+                    , label = Element.text "Button.simple ++ Color.primary"
+                    }
+                , Input.button (Button.simple ++ Card.large) <|
+                    { onPress = Nothing
+                    , label = Element.text "Button.simple ++ Card.large"
+                    }
+                ]
+            , Element.paragraph [] <|
+                List.singleton <|
+                    Element.el Heading.h3 <|
+                        Element.text "Grid.compact with Group.left/right"
+            , Element.row Grid.compact <|
+                [ Input.button Button.groupLeft <|
+                    { onPress = Nothing
+                    , label = Element.text "Group.left"
                     }
                 , Input.button Button.groupRight <|
                     { onPress = Nothing
-                    , label = Element.text "Button.groupRight"
+                    , label = Element.text "Group.right"
                     }
-                , Input.button Button.groupTop <|
-                    { onPress = Nothing
-                    , label = Element.text "Button.groupTop"
-                    }
-                , Input.button Button.groupBottom <|
-                    { onPress = Nothing
-                    , label = Element.text "Button.groupBottom"
-                    }
-                ]
-            , Element.column Grid.section <|
-                [ Element.paragraph [] <|
-                    List.singleton <|
-                        Element.text "Button attributes can be combined with other attributes."
-                , Element.wrappedRow Grid.simple <|
-                    [ Input.button (Button.simple ++ Color.disabled) <|
-                        { onPress = Nothing
-                        , label = Element.text "Button.simple ++ Color.disabled"
-                        }
-                    , Input.button
-                        (Button.simple ++ Color.primary)
-                      <|
-                        { onPress = Nothing
-                        , label = Element.text "Button.simple ++ Color.primary"
-                        }
-                    , Input.button (Button.simple ++ Card.large) <|
-                        { onPress = Nothing
-                        , label = Element.text "Button.simple ++ Card.large"
-                        }
-                    ]
-                , Element.paragraph [] <|
-                    List.singleton <|
-                        Element.el Heading.h3 <|
-                            Element.text "Grid.compact with Button.groupLeft/Center/Right"
-                , Element.row Grid.compact <|
-                    [ Input.button Button.groupLeft <|
-                        { onPress = Nothing
-                        , label = Element.text "Button.groupLeft"
-                        }
-                    , Input.button Button.groupRight <|
-                        { onPress = Nothing
-                        , label = Element.text "Button.groupRight"
-                        }
-                    ]
                 ]
             ]
         ]
@@ -366,6 +391,8 @@ view =
         Framework.container
         [ Element.el Heading.h1 <| Element.text "Elm-Ui Framework"
         , heading
+        , tag
+        , group
         , color
         , card
         , grid

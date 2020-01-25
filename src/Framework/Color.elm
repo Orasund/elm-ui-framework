@@ -1,6 +1,6 @@
 module Framework.Color exposing
     ( cyan, green, lighterGrey, lightGrey, grey, darkGrey, darkerGrey, red, turquoise, yellow
-    , danger, light, dark, disabled, info, primary, success, warning
+    , simple, white, black, danger, light, dark, disabled, info, primary, success, warning
     )
 
 {-| This module contains the colors used in the framework.
@@ -9,7 +9,7 @@ module Framework.Color exposing
 
 Some colors also have a Attribute that can be used nearly everywhere.
 
-@docs danger, light, dark, disabled, info, primary, success, warning
+@docs simple, white, black, danger, light, dark, disabled, info, primary, success, warning
 
 -}
 
@@ -27,15 +27,22 @@ lightGrey =
 
 
 {-| -}
-disabled : List (Attribute msg)
-disabled =
+simple : List (Attribute msg)
+simple =
     [ Background.color <| lightGrey
     , Border.color <| lightGrey
-    , Font.color <| grey
-    , Element.mouseOver []
-    , Element.focused []
-    , Element.htmlAttribute <| Attributes.style "cursor" "not-allowed"
     ]
+
+
+{-| -}
+disabled : List (Attribute msg)
+disabled =
+    simple
+        ++ [ Font.color <| grey
+           , Element.mouseOver []
+           , Element.focused []
+           , Element.htmlAttribute <| Attributes.style "cursor" "not-allowed"
+           ]
 
 
 {-| -}
@@ -119,6 +126,18 @@ danger =
     , Border.color <| red
     , Font.color <| lighterGrey
     ]
+
+
+{-| -}
+white : Color
+white =
+    Element.rgb255 255 255 255
+
+
+{-| -}
+black : Color
+black =
+    Element.rgb255 0 0 0
 
 
 {-| -}
