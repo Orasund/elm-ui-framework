@@ -1,9 +1,8 @@
-module Framework.Group exposing (bottom, center, left, right, top)
+module Framework.Group exposing (left, center, right, top, bottom)
 
-{- This module contains different attributes for grouping things together
+{-| This module contains different attributes for grouping things together
 
-
-   @docs groupLeft, groupCenter, groupRight, groupTop, groupBottom
+@docs left, center, right, top, bottom
 
 -}
 

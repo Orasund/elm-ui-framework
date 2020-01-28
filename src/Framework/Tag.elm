@@ -1,11 +1,20 @@
 module Framework.Tag exposing (simple, slim)
 
+{-| A Tag is a inline highlight of a text.
+
+@docs simple, slim
+
+-}
+
 import Element exposing (Attribute)
 import Element.Background as Background
 import Element.Border as Border
 import Framework.Color as Color
 
 
+{-| A basic Tag.
+Check the source-code for more information.
+-}
 simple : List (Attribute msg)
 simple =
     Color.simple
@@ -14,6 +23,9 @@ simple =
            ]
 
 
+{-| A slim Tag.
+Check the source-code for more information.
+-}
 slim : List (Attribute msg)
 slim =
     simple
