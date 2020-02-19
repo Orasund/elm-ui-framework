@@ -3,7 +3,7 @@
     "name": "Orasund/elm-ui-framework",
     "summary": "A CSS framework to go hand in hand with elm-ui.",
     "license": "BSD-3-Clause",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "exposed-modules": [
         "Framework",
         "Framework.Button",
@@ -13,7 +13,8 @@
         "Framework.Heading",
         "Framework.Input",
         "Framework.Group",
-        "Framework.Tag"
+        "Framework.Tag",
+        "Framework.Slider"
     ],
     "elm-version": "0.19.0 <= v < 0.20.0",
     "dependencies": {

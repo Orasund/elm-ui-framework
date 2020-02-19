@@ -13,6 +13,7 @@ import Framework.Group as Group
 import Framework.Heading as Heading
 import Framework.Input as Input
 import Framework.Tag as Tag
+import Framework.Slider as Slider
 import Html exposing (Html)
 import Html.Attributes as Attributes
 
@@ -56,6 +57,64 @@ group =
                 , Element.el (Card.fill ++ Group.right) <| Element.text "Group.right"
                 , Element.el (Card.fill ++ Group.top) <| Element.text "Group.top"
                 , Element.el (Card.fill ++ Group.bottom) <| Element.text "Group.bottom"
+                ]
+            ]
+        ]
+
+slider : Element ()
+slider =
+    Element.column Grid.section <|
+        [ Element.el Heading.h1 <| Element.text "Slider"
+        , Element.column (Card.simple ++ Grid.simple) <|
+            [ Element.wrappedRow Grid.simple <|
+                [ Input.slider Slider.simple <|
+                    { onChange = always ()
+                    , label = Input.labelLeft Input.label <| Element.text "Slider.simple"
+                    , min = 0
+                    , max = 100
+                    , value = 42
+                    , thumb = Input.thumb Slider.thumb
+                    , step = Nothing
+                    }
+                , Input.slider (Slider.withSteps 10) <|
+                    { onChange = always ()
+                    , label = Input.labelLeft Input.label <| Element.text "Slider.withSteps 10"
+                    , min = 1
+                    , max = 10
+                    , value = 4
+                    , thumb = Input.thumb Slider.thumb
+                    , step = Nothing
+                    }
+                ]
+            ]
+        , Element.column Grid.simple <|
+            [ Element.paragraph [] <|
+                List.singleton <|
+                    Element.text "Button attributes can be combined with other attributes."
+            , Element.wrappedRow Grid.simple <|
+                [ Input.slider (Slider.simple ) <|
+                    { onChange = always ()
+                    , label = Input.labelLeft Input.label <| Element.text "Slider.thumb ++ Color.primary"
+                    , min = 0
+                    , max = 100
+                    , value = 42
+                    , thumb = Input.thumb (Slider.thumb ++ Color.primary)
+                    , step = Nothing
+                    }
+                ]
+            , Element.paragraph [] <|
+                List.singleton <|
+                    Element.el Heading.h3 <|
+                        Element.text "Grid.compact with Group.left/right"
+            , Element.row Grid.compact <|
+                [ Input.button Button.groupLeft <|
+                    { onPress = Nothing
+                    , label = Element.text "Group.left"
+                    }
+                , Input.button Button.groupRight <|
+                    { onPress = Nothing
+                    , label = Element.text "Group.right"
+                    }
                 ]
             ]
         ]
@@ -398,6 +457,7 @@ view =
         , grid
         , button
         , input
+        , slider
         ]
 
 
