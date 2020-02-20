@@ -48,16 +48,30 @@ the first argument denotes the amount of possible values (max - min)
 withSteps : Int -> List (Attribute msg)
 withSteps step =
     [ Element.behindContent
-        (   Element.none
-            |> Element.el 
-                [ Element.width Element.fill
-                , Element.height (Element.px 2)
-                , Background.color Color.lightGrey
-                , Border.widthEach
-                    { bottom = 0, left = 1, right = 1, top = 0 } 
-                , Border.color Color.grey
+        (   List.concat
+                [ List.singleton <| 
+                    [ Element.width <| Element.px <| 6
+                    , Border.widthEach { bottom = 0, left = 0, right = 1, top = 0 }
+                    ]
+                , [ Element.width <| Element.fill
+                    , Border.widthXY 1 0  ] |> List.repeat (step - 1)
+                , List.singleton <|
+                    [ Element.width <| Element.px <| 6
+                    , Border.widthEach <| { bottom = 0, left = 1, right = 0, top = 0 }
+                    ]
                 ]
-            |> List.repeat (step - 1)
+            |> List.map
+                (\list ->
+                    Element.none
+                    |> Element.el 
+                        (list
+                            ++ [ Element.height (Element.px 2)
+                        , Background.color Color.lightGrey 
+                        , Border.color Color.grey
+                        ])
+                        
+                
+                )
             |> Element.row
                 [ Element.width Element.fill
                 , Element.height (Element.px 2)

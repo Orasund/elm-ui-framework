@@ -81,7 +81,7 @@ slider =
                     , label = Input.labelLeft Input.label <| Element.text "Slider.withSteps 10"
                     , min = 1
                     , max = 10
-                    , value = 4
+                    , value = 9
                     , thumb = Input.thumb Slider.thumb
                     , step = Nothing
                     }
